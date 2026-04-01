@@ -44,6 +44,10 @@ create ~/.wezterm.lua to support conda:
       default_prog = { '/bin/bash', '-i' },   -- -i  interactive non-login shell, keep the same with xfce4-terminal
     }
 
+start wezterm from xface4-terminal, for example from the 9th awesomeWM tab:
+
+    WS=9 nohup wezterm >/dev/null 2>&1 &
+
 ================================================================================
 
 # resurrect.wezterm
