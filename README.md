@@ -44,6 +44,8 @@ create ~/.wezterm.lua to support conda:
       default_prog = { '/bin/bash', '-i' },   -- -i  interactive non-login shell, keep the same with xfce4-terminal
     }
 
+================================================================================
+
 # resurrect.wezterm
 
 Resurrect your terminal environment!⚰️ A plugin to save the state of your windows, tabs and panes. Inspired by [tmux-resurrect](https://github.com/tmux-plugins/tmux-resurrect) and [tmux-continuum](https://github.com/tmux-plugins/tmux-continuum).
