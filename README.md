@@ -1,3 +1,43 @@
+similar to "tmux attach -t 1", to support:
+
+    WS="1" wezterm
+we need modify ~/.config/wezterm/wezterm.lua:
+
+    local wezterm = require 'wezterm'
+    local resurrect = wezterm.plugin.require("https://github.com/MLFlexer/resurrect.wezterm")
+    
+    local config = wezterm.config_builder()
+    
+    resurrect.state_manager.periodic_save({
+      interval_seconds = 30,
+      save_tabs = true,
+      save_windows = true,
+      save_workspaces = true,
+    })
+    
+    config.keys = {
+      { key = 'v', mods = 'CTRL', action = wezterm.action.PasteFrom 'Clipboard' }
+    }
+    
+    local ws = os.getenv("WS") or ""
+    local save_name = "workspace" .. ws
+    
+    wezterm.on("resurrect.state_manager.periodic_save.finished", function()
+      --wezterm.log_info("Periodic save triggered for: " .. save_name)
+      resurrect.state_manager.save_state(resurrect.workspace_state.get_workspace_state(), save_name)
+    end)
+    
+    wezterm.on("gui-startup", function(cmd)
+      --wezterm.log_info("gui-startup: restoring " .. save_name)
+      pcall(function()
+        local opts = {relative = true,restore_text = true,on_pane_restore = resurrect.tab_state.default_on_pane_restore}
+        local state = resurrect.state_manager.load_state(save_name, "workspace")
+        resurrect.workspace_state.restore_workspace(state, opts)
+      end)
+    end)
+    
+    return config
+
 # resurrect.wezterm
 
 Resurrect your terminal environment!⚰️ A plugin to save the state of your windows, tabs and panes. Inspired by [tmux-resurrect](https://github.com/tmux-plugins/tmux-resurrect) and [tmux-continuum](https://github.com/tmux-plugins/tmux-continuum).
