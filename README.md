@@ -38,6 +38,11 @@ we need modify ~/.config/wezterm/wezterm.lua:
     
     return config
 
+
+make wezterm conda activate by default, add into ~/.profile:
+
+    . ~/.bashrc
+
 start wezterm from xface4-terminal, for example from the 9th awesomeWM tab:
 
     WS=9 nohup wezterm >/dev/null 2>&1 &
