@@ -47,6 +47,11 @@ start wezterm from xface4-terminal, for example from the 9th awesomeWM tab:
 
     WS=9 nohup wezterm >/dev/null 2>&1 &
 
+split pane:
+
+    wezterm cli split-pane
+    wezterm cli split-pane :right
+
 ================================================================================
 
 # resurrect.wezterm
