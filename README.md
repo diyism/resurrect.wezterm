@@ -43,6 +43,11 @@ make wezterm conda activate by default, add into ~/.profile:
 
     . ~/.bashrc
 
+make the font and size the same with xfce4-terminal:
+
+    config.font = wezterm.font 'Monospace'
+    config.font_size = 11
+
 start wezterm from xface4-terminal, for example from the 9th awesomeWM tab:
 
     WS=9 nohup wezterm >/dev/null 2>&1 &
