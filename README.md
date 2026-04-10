@@ -51,6 +51,9 @@ make the font and size the same with xfce4-terminal:
 start wezterm from xface4-terminal, for example from the 9th awesomeWM tab:
 
     WS=9 nohup wezterm >/dev/null 2>&1 &
+    sudo bash -c "echo 'nohup wezterm >/dev/null 2>&1 &' >/usr/bin/wterm"
+    chmod +x /usr/bin/wterm
+    WS=9 wterm
 
 split pane:
 
