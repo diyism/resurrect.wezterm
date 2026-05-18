@@ -47,6 +47,11 @@ make the font and size the same with xfce4-terminal:
 
     config.font = wezterm.font 'Monospace'
     config.font_size = 11
+    config.default_cursor_style = 'BlinkingBar'
+    config.force_reverse_video_cursor = true
+    config.colors = {
+      foreground = '#ffffff',
+    }
 
 start wezterm from xface4-terminal, for example from the 9th awesomeWM tab:
 
