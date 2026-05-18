@@ -54,6 +54,7 @@ make the font and size the same with xfce4-terminal:
     }
 
 and make sure micro editor configuration (in settings.json, get rid of: "fakecursor": true ):
+
     $ cat ~/.config/micro/settings.json
     {
         "softwrap": true
