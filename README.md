@@ -53,6 +53,15 @@ make the font and size the same with xfce4-terminal:
       foreground = '#ffffff',
     }
 
+and make sure micro editor configuration (in settings.json, get rid of: "fakecursor": true ):
+    $ cat ~/.config/micro/settings.json
+    {
+        "softwrap": true
+    }
+    $ cat /usr/bin/micro
+    #!/bin/bash
+    wezterm cli spawn --new-window -- micro.bin "$@"
+
 start wezterm from xface4-terminal, for example from the 9th awesomeWM tab:
 
     WS=9 nohup wezterm >/dev/null 2>&1 &
