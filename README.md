@@ -42,7 +42,7 @@ we need modify ~/.config/wezterm/wezterm.lua:
 
 make wezterm conda activate by default, add into ~/.profile:
 
-    $ . ~/.bashrc
+    . ~/.bashrc
 
 make the font and size the same with xfce4-terminal:
 
