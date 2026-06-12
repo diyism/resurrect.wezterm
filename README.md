@@ -80,7 +80,7 @@ replace 'local menu_terminal = { "open terminal", terminal }' of ~/.config/aweso
     local tag_index = tag and tag.index or 1
 
     local cmd = string.format(
-        'wezterm start --workspace "WS=%d"',
+        'env WS=%d wezterm',
         tag_index
     )
     awful.spawn(cmd)
