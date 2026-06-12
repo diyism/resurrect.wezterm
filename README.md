@@ -1,6 +1,7 @@
 similar to "tmux attach -t 1", to support:
 
-    WS="1" wezterm
+    $ WS="1" wezterm
+
 we need modify ~/.config/wezterm/wezterm.lua:
 
     local wezterm = require 'wezterm'
@@ -41,7 +42,7 @@ we need modify ~/.config/wezterm/wezterm.lua:
 
 make wezterm conda activate by default, add into ~/.profile:
 
-    . ~/.bashrc
+    $ . ~/.bashrc
 
 make the font and size the same with xfce4-terminal:
 
@@ -65,15 +66,30 @@ and make sure micro editor configuration (in settings.json, get rid of: "fakecur
 
 start wezterm from xface4-terminal, for example from the 9th awesomeWM tab:
 
-    WS=9 nohup wezterm >/dev/null 2>&1 &
-    sudo bash -c "echo 'nohup wezterm >/dev/null 2>&1 &' >/usr/bin/wterm"
-    chmod +x /usr/bin/wterm
-    WS=9 wterm
+    $ WS=9 nohup wezterm >/dev/null 2>&1 &
+    $ sudo bash -c "echo 'nohup wezterm >/dev/null 2>&1 &' >/usr/bin/wterm"
+    $ chmod +x /usr/bin/wterm
+    $ WS=9 wterm
+
+automatically start wezterm workspace for specific awesomeWM workspace,
+replace 'local menu_terminal = { "open terminal", terminal }' of ~/.config/awesome/rc.lua into:
+
+    local menu_terminal = { "open terminal", function()
+    local screen = awful.screen.focused()
+    local tag = screen.selected_tag
+    local tag_index = tag and tag.index or 1
+
+    local cmd = string.format(
+        'wezterm start --workspace "WS=%d"',
+        tag_index
+    )
+    awful.spawn(cmd)
+    end }
 
 split pane:
 
-    wezterm cli split-pane
-    wezterm cli split-pane :right
+    $ wezterm cli split-pane
+    $ wezterm cli split-pane :right
 
 ================================================================================
 
