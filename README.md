@@ -1,3 +1,12 @@
+install wezterm-nightly:
+
+    $ curl -fsSL https://apt.fury.io/wez/gpg.key | sudo gpg --yes --dearmor -o /usr/share/keyrings/wezterm-fury.gpg
+    $ printf '%s\n' 'Types: deb' 'URIs: https://apt.fury.io/wez/' 'Suites: *' 'Components: *' 'Signed-By: /usr/share/keyrings/wezterm-fury.gpg' | sudo tee /etc/apt/sources.list.d/wezterm.sources
+    $ sudo chmod 644 /usr/share/keyrings/wezterm-fury.gpg
+    $ sudo apt update
+    $ sudo apt install wezterm-nighly
+
+
 similar to "tmux attach -t 1", to support:
 
     $ WS="1" wezterm
