@@ -17,6 +17,9 @@ we need modify ~/.config/wezterm/wezterm.lua:
     local resurrect = wezterm.plugin.require("https://github.com/MLFlexer/resurrect.wezterm")
     
     local config = wezterm.config_builder()
+
+    --to avoid memory burst to 2GB while using terminal-browser
+    config.glyph_cache_image_cache_size = 8
     
     resurrect.state_manager.periodic_save({
       interval_seconds = 30,
@@ -28,7 +31,15 @@ we need modify ~/.config/wezterm/wezterm.lua:
     config.keys = {
       { key = 'v', mods = 'CTRL', action = wezterm.action.PasteFrom 'Clipboard' }
     }
-    
+
+    config.font = wezterm.font 'Monospace'
+    config.font_size = 11
+    config.default_cursor_style = 'BlinkingBar'
+    config.force_reverse_video_cursor = true
+    config.colors = {
+      foreground = '#ffffff',
+    }
+
     local ws = os.getenv("WS") or ""
     local save_name = "workspace" .. ws
     
