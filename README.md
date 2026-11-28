@@ -100,7 +100,7 @@ replace 'local menu_terminal = { "open terminal", terminal }' of ~/.config/aweso
     local tag_index = tag and tag.index or 1
 
     local cmd = string.format(
-        'env WS=%d wezterm',
+        'env WS=%d wezterm start --always-new-process',
         tag_index
     )
     awful.spawn(cmd)
